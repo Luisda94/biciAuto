@@ -1,5 +1,7 @@
 package modelo;
 
+import java.util.Scanner;
+
 import interfaces.interfazVehiculo;
 
 public class Auto  extends Vehiculo implements interfazVehiculo {
@@ -28,7 +30,10 @@ public class Auto  extends Vehiculo implements interfazVehiculo {
     // Implementación del método de la interfaz
     @Override
     public String tipoDeBencina() {
-        return "Gasolina";
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Ingrese el tipo de bencina que desea (95 octanos, 91 octanos ): ");
+        String tipoBencina = scanner.nextLine();
+        return tipoBencina;
     }
 
     // Getters y Setters
