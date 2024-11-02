@@ -8,6 +8,7 @@ public class Auto  extends Vehiculo implements interfazVehiculo {
 	//aribuos de auto
     private String color;
     private String modelo;
+	private boolean tieneBencina;
 
     // Constructor
     public Auto(int numeroRuedas, int cantidadVentanas, String color, String modelo) {
@@ -29,12 +30,15 @@ public class Auto  extends Vehiculo implements interfazVehiculo {
 
     // Implementación del método de la interfaz
     @Override
-    public String tipoDeBencina() {
+    public void cargarBencina() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Ingrese el tipo de bencina que desea (95 octanos, 91 octanos ): ");
+        System.out.println("Ingrese el tipo de bencina que desea (95 octanos, 91 octanos): ");
         String tipoBencina = scanner.nextLine();
-        return tipoBencina;
+        
+        this.setTieneBencina(true); // Indicar que el auto ahora tiene bencina
+        System.out.println("Bencina de tipo " + tipoBencina + " cargada exitosamente.");
     }
+
 
     // Getters y Setters
     public String getColor() {
@@ -57,5 +61,19 @@ public class Auto  extends Vehiculo implements interfazVehiculo {
     public String toString() {
         return "Auto " + modelo + " de color " + color + ", " + super.toString();
     }
+
+	@Override
+	public String tipoDeBencina() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public boolean isTieneBencina() {
+		return tieneBencina;
+	}
+
+	public void setTieneBencina(boolean tieneBencina) {
+		this.tieneBencina = tieneBencina;
+	}
 
 }
