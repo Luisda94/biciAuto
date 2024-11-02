@@ -49,7 +49,7 @@ public class Main {
                                 miAuto.apagar();
                                 break;
                             case 4:
-                                System.out.println("Tipo de bencina: " + miAuto.tipoDeBencina());
+                                System.out.println("Gracias por preferirnos bencina " + miAuto.tipoDeBencina()+" cargada");
                                 break;
                             case 5:
                                 System.out.println("Regresando al menú principal...");
