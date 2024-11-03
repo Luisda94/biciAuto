@@ -15,7 +15,7 @@ public class Main {
         Auto miAuto = new Auto(4, 4, "Rojo", "Toyota");
         
       
-        Bicicleta miBicicleta = new Bicicleta(2, "Eléctrica","electricida");
+        Bicicleta miBicicleta = new Bicicleta(2, "Eléctrica");
         miBicicleta.cargarBencina(); // Permite al usuario cargar el combustible
         miBicicleta.encender(); // Ahora debería encenderse correctamente
 
