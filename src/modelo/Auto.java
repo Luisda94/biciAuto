@@ -31,7 +31,8 @@ public class Auto  extends Vehiculo implements interfazVehiculo {
     // Implementación del método de la interfaz
     @Override
     public void cargarBencina() {
-        Scanner scanner = new Scanner(System.in);
+        @SuppressWarnings("resource")
+		Scanner scanner = new Scanner(System.in);
         System.out.println("Ingrese el tipo de bencina que desea (95 octanos, 91 octanos): ");
         String tipoBencina = scanner.nextLine();
         

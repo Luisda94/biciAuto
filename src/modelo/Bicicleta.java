@@ -1,5 +1,7 @@
 package modelo;
 
+import java.util.Scanner;
+
 import interfaces.interfazVehiculo;
 
 public class Bicicleta extends Vehiculo implements interfazVehiculo{
@@ -11,13 +13,24 @@ public class Bicicleta extends Vehiculo implements interfazVehiculo{
     public Bicicleta(int numeroRuedas, String tipoBicicleta,String tipoCombustible) {
         super(numeroRuedas, 0);// se pone 0 porque las bicis no tienen ventanas
         this.tipoBicicleta = tipoBicicleta;
-        this.tipoCombustible = tipoCombustible;
+        this.tipoCombustible = null; // Inicializamos como null hasta que se cargue
     }
     
+	@Override
+	public void cargarBencina() {
+		// TODO Auto-generated method stub
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Ingrese el tipo de combustible (electricidad, bencina, fuerza de las piernas): ");
+        this.tipoCombustible = scanner.nextLine();
+        System.out.println("Gracias por preferirnos, " + tipoCombustible + " cargada.");
+    }
 
     // Implementación de los métodos abstractos
     @Override
     public void encender() {
+        if (tipoCombustible == null) {//La condicion en null que incializamos al principio,
+            System.out.println("Primero debes cargar el tipo de combustible.");
+            return;}
     	switch (tipoCombustible.toLowerCase()) {
         case "electricidad":
             System.out.println("La bicicleta eléctrica está encendida.");
@@ -57,14 +70,6 @@ public class Bicicleta extends Vehiculo implements interfazVehiculo{
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-
-	@Override
-	public void cargarBencina() {
-		// TODO Auto-generated method stub
-		
-	}
-
 
 	public String getTipoCombustible() {
 		return tipoCombustible;
