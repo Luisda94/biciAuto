@@ -8,6 +8,7 @@ public class Bicicleta extends Vehiculo implements interfazVehiculo{
 	//un solo atribuo a consideracion. 
     private String tipoBicicleta;
     private String tipoCombustible; // Electricidad, Bencina, o Fuerza de las piernas
+	private Scanner scanner;
 
     // Constructor
     public Bicicleta(int numeroRuedas, String tipoBicicleta,String tipoCombustible) {
@@ -18,36 +19,44 @@ public class Bicicleta extends Vehiculo implements interfazVehiculo{
     
 	@Override
 	public void cargarBencina() {
-		// TODO Auto-generated method stub
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Ingrese el tipo de combustible (electricidad, bencina, fuerza de las piernas): ");
-        this.tipoCombustible = scanner.nextLine();
-        System.out.println("Gracias por preferirnos, " + tipoCombustible + " cargada.");
+        if (tipoBicicleta.equalsIgnoreCase("eléctrica") || tipoBicicleta.equalsIgnoreCase("motor a bencina")) {
+            System.out.println("Ingrese el tipo de combustible (electricidad o bencina): ");
+            this.tipoCombustible = scanner.nextLine();
+            System.out.println("Gracias por preferirnos, " + tipoCombustible + " cargada.");
+        } else if (tipoBicicleta.equalsIgnoreCase("mecánica")) {
+            this.tipoCombustible = "fuerza de las piernas";
+            System.out.println("No necesitas combustible para una bicicleta mecánica, ¡solo pedalea!");
+        } else {
+            System.out.println("Tipo de bicicleta no válido.");
+        }
     }
-
     // Implementación de los métodos abstractos
     @Override
     public void encender() {
-        if (tipoCombustible == null) {//La condicion en null que incializamos al principio,
-            System.out.println("Primero debes cargar el tipo de combustible.");
-            return;}
-    	switch (tipoCombustible.toLowerCase()) {
-        case "electricidad":
-            System.out.println("La bicicleta eléctrica está encendida.");
-            break;
-        case "bencina":
-            System.out.println("La bicicleta con motor a bencina está encendida.");
-            break;
-        default:
+        if (tipoBicicleta.equalsIgnoreCase("eléctrica") || tipoBicicleta.equalsIgnoreCase("motor a bencina")) {
+            if (tipoCombustible == null || tipoCombustible.isEmpty()) {
+                System.out.println("Primero debes cargar el tipo de combustible.");
+                return;
+            }
+
+            if (tipoCombustible.equalsIgnoreCase("electricidad")) {
+                System.out.println("La bicicleta eléctrica está encendida.");
+            } else if (tipoCombustible.equalsIgnoreCase("bencina")) {
+                System.out.println("La bicicleta con motor a bencina está encendida.");
+            } else {
+                System.out.println("Tipo de combustible no válido.");
+            }
+        } else if (tipoBicicleta.equalsIgnoreCase("mecánica")) {
             System.out.println("Las bicicletas mecánicas no se encienden, ¡empieza a pedalear!");
-            break;
+        } else {
+            System.out.println("Tipo de bicicleta no válido.");
     }
 }
     
 
     @Override
     public void apagar() {
-        System.out.println("Has terminado de pedalear.");
+        System.out.println("Has terminado de pedalear ó se te acabo la energia.");
     }
 
     // Getters y Setters

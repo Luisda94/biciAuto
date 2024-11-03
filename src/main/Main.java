@@ -14,9 +14,10 @@ public class Main {
         // Instancia de Auto y Bicicleta
         Auto miAuto = new Auto(4, 4, "Rojo", "Toyota");
         
-        Bicicleta biciElectrica = new Bicicleta(2, "Eléctrica", "electricidad");
-        Bicicleta biciConMotor = new Bicicleta(2, "Con Motor", "bencina");
-        Bicicleta biciMecanica = new Bicicleta(2, "Mecánica", "fuerza de las piernas");
+      
+        Bicicleta miBicicleta = new Bicicleta(2, "Eléctrica","electricida");
+        miBicicleta.cargarBencina(); // Permite al usuario cargar el combustible
+        miBicicleta.encender(); // Ahora debería encenderse correctamente
 
         int opcionPrincipal;
         do {
@@ -75,13 +76,13 @@ public class Main {
 
                         switch (opcionBici) {
                             case 1:
-                                System.out.println(biciElectrica);
+                                System.out.println(miBicicleta);
                                 break;
                             case 2:
-                            	biciElectrica.encender();
+                            	miBicicleta.encender();
                                 break;
                             case 3:
-                            	biciElectrica.apagar();
+                            	miBicicleta.apagar();
                                 break;
                             case 4:
                                 System.out.println("Regresando al menú principal...");

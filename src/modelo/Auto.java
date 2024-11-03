@@ -15,13 +15,18 @@ public class Auto  extends Vehiculo implements interfazVehiculo {
         super(numeroRuedas, cantidadVentanas);
         this.color = color;
         this.modelo = modelo;
+        this.tieneBencina = false; // Inicializamos como falso, ya que no tiene bencina al crear el auto
     }
 
     // Implementación de los métodos abstractos
     @Override
     public void encender() {
-        System.out.println("El auto está encendido.");
-    }
+        if (tieneBencina) {
+            System.out.println("El auto está encendido.");
+        } else {
+            System.out.println("No hay suficiente bencina para encender el auto. Por favor, cargue bencina.");
+        }
+        }
 
     @Override
     public void apagar() {
@@ -58,15 +63,10 @@ public class Auto  extends Vehiculo implements interfazVehiculo {
         this.modelo = modelo;
     }
 
-    @Override
-    public String toString() {
-        return "Auto " + modelo + " de color " + color + ", " + super.toString();
-    }
-
 	@Override
 	public String tipoDeBencina() {
 		// TODO Auto-generated method stub
-		return null;
+		return "Este auto usa gasolina. Recuerde elegir entre 95 o 91 octanos.";
 	}
 
 	public boolean isTieneBencina() {
@@ -76,5 +76,9 @@ public class Auto  extends Vehiculo implements interfazVehiculo {
 	public void setTieneBencina(boolean tieneBencina) {
 		this.tieneBencina = tieneBencina;
 	}
+    @Override
+    public String toString() {
+        return "Auto " + modelo + " de color " + color + ", " + super.toString();
+    }
 
 }
