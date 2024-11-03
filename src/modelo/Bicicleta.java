@@ -3,7 +3,7 @@ package modelo;
 import java.util.Scanner;
 
 import interfaces.interfazVehiculo;
-
+///considerar aplicar la misma logia de auto en los motores electricos y de bencina de la bici
 public class Bicicleta extends Vehiculo implements interfazVehiculo{
 	//un solo atribuo a consideracion. 
     private String tipoBicicleta;
