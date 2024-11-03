@@ -11,47 +11,52 @@ public class Main {
 
         Auto miAuto = null;
         Bicicleta miBicicleta = null;
-
-        // Preguntar al usuario qué tipo de vehículo desea usar
-        System.out.println("Seleccione el tipo de vehículo que desea usar (auto o bicicleta): ");
-        String tipoVehiculo = scanner.nextLine().toLowerCase();
-
-        if (tipoVehiculo.equals("auto")) {
-            System.out.println("Ingrese el número de ruedas del auto: ");
-            int numeroRuedas = scanner.nextInt();
-
-            System.out.println("Ingrese el número de ventanas del auto: ");
-            int cantidadVentanas = scanner.nextInt();
-            scanner.nextLine(); // Limpiar el buffer del scanner
-
-            System.out.println("Ingrese el color del auto: ");
-            String color = scanner.nextLine();
-
-            System.out.println("Ingrese la marca o modelo del auto: ");
-            String modelo = scanner.nextLine();
-
-            miAuto = new Auto(numeroRuedas, cantidadVentanas, color, modelo);
-        } else if (tipoVehiculo.equals("bicicleta")) {
-            System.out.println("Ingrese el tipo de bicicleta (eléctrica, motor a bencina, mecánica): ");
-            String tipoBicicleta = scanner.nextLine();
-
-            miBicicleta = new Bicicleta(2, tipoBicicleta);
-        } else {
-            System.out.println("Opción no válida. Por favor, elija 'auto' o 'bicicleta'.");
-        }
-
         int opcionPrincipal;
         do {
             System.out.println("\n--- Menú Principal ---");
-            System.out.println("1. Interactuar con el Auto");
-            System.out.println("2. Interactuar con la Bicicleta");
-            System.out.println("3. Salir");
+            System.out.println("1. Crear Auto");
+            System.out.println("2. Crear Bicicleta");
+            System.out.println("3. Interactuar con el Auto");
+            System.out.println("4. Interactuar con la Bicicleta");
+            System.out.println("5. Salir");
             System.out.print("Seleccione una opción: ");
             opcionPrincipal = scanner.nextInt();
+            scanner.nextLine(); // Limpiar el buffer
 
             switch (opcionPrincipal) {
-                case 1:
-                    if (miAuto != null) {
+            case 1:
+                // Crear un Auto
+                System.out.println("Ingrese el número de ruedas del auto: ");
+                int numeroRuedas = scanner.nextInt();
+
+                System.out.println("Ingrese el número de ventanas del auto: ");
+                int cantidadVentanas = scanner.nextInt();
+                scanner.nextLine(); // Limpiar el buffer
+
+                System.out.println("Ingrese el color del auto: ");
+                String color = scanner.nextLine();
+
+                System.out.println("Ingrese la marca o modelo del auto: ");
+                String modelo = scanner.nextLine();
+
+                miAuto = new Auto(numeroRuedas, cantidadVentanas, color, modelo);
+                System.out.println("¡Auto creado exitosamente!");
+                break;
+
+            case 2:
+                // Crear una Bicicleta
+                System.out.println("Ingrese el tipo de bicicleta (eléctrica, motor a bencina, mecánica): ");
+                String tipoBicicleta = scanner.nextLine();
+
+                miBicicleta = new Bicicleta(2, tipoBicicleta);
+                System.out.println("¡Bicicleta creada exitosamente!");
+                break;
+
+
+
+            case 3:
+                // Interactuar con el Auto
+            	if (miAuto != null) {
                         int opcionAuto;
                         do {
                             System.out.println("\n--- Menú Auto ---");
@@ -88,7 +93,7 @@ public class Main {
                     }
                     break;
 
-                case 2:
+                case 4:
                     if (miBicicleta != null) {
                         int opcionBici;
                         do {
@@ -122,14 +127,14 @@ public class Main {
                     }
                     break;
 
-                case 3:
+                case 5:
                     System.out.println("Saliendo del programa. ¡Hasta pronto!");
                     break;
 
                 default:
                     System.out.println("Opción inválida, intente nuevamente.");
             }
-        } while (opcionPrincipal != 3);
+        } while (opcionPrincipal != 5);
 
         scanner.close();
     }
