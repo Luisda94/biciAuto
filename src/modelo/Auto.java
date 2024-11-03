@@ -8,7 +8,8 @@ public class Auto  extends Vehiculo implements interfazVehiculo {
 	//aribuos de auto
     private String color;
     private String modelo;
-	private boolean tieneBencina;
+	private boolean tieneBencina;//bolean verdadero o falso para poder mejorar la logica.
+
 
     // Constructor
     public Auto(int numeroRuedas, int cantidadVentanas, String color, String modelo) {
@@ -21,7 +22,7 @@ public class Auto  extends Vehiculo implements interfazVehiculo {
     // Implementación de los métodos abstractos
     @Override
     public void encender() {
-        if (tieneBencina) {
+        if (tieneBencina) {//coloco la condicion logica de tener combustible.
             System.out.println("El auto está encendido.");
         } else {
             System.out.println("No hay suficiente bencina para encender el auto. Por favor, cargue bencina.");
